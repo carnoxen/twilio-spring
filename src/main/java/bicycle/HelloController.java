@@ -11,14 +11,16 @@ import com.twilio.type.PhoneNumber;
 public class HelloController {
 	private static final String ACCOUNT_SID = System.getenv("TWILIO_ACCOUNT_SID");
 	private static final String AUTH_TOKEN = System.getenv("TWILIO_AUTH_TOKEN");
+	private static final String MANAGER_PHONENUM = System.getenv("MANAGER_PHONENUM");
+	private static final String MY_PHONENUM = System.getenv("MY_PHONENUM");
 	
 	@GetMapping("/")
 	public String hello() {
 		 Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 		 
 		 Message message = Message.creator( 
-				 new PhoneNumber("+821056271824"), 
-				 new PhoneNumber("+19528007566"),
+				 new PhoneNumber(MY_PHONENUM), 
+				 new PhoneNumber(MANAGER_PHONENUM),
 				 "This is the ship that made the Kessel Run in fourteen parsecs?") 
 				 .create();
 		 
